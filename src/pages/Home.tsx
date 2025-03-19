@@ -18,8 +18,8 @@ type Product = {
 
 const Home: FC = () => {
   return (
-    <main className="flex flex-wrap justify-center gap-14 p-4">{productData.map((product: Product, id: number) =>(
-      <Product key={id} id={product.id} title={product.title} price={product.price} description={product.description} category={product.category} image={product.image} rating={product.rating}/>
+    <main className="flex flex-wrap justify-center gap-14 p-4">{productData.map((product: Product, _id: number) =>(
+      <Product key={product.id} productId={product.id} title={product.title} price={product.price}  image={product.image} rating={product.rating}/>
     ))
     }</main>
   )
