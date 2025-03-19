@@ -1,5 +1,6 @@
 import { FC } from "react"
 import productData from '../data/productList.json'
+import Product from "../components/Product";
 
 type Product = {
   id: number;
@@ -17,15 +18,10 @@ type Product = {
 
 const Home: FC = () => {
   return (
-    <div>{productData.map((product: Product, id: number) => (
-      <div key={id}>
-        <h1>{product.title}</h1>
-        <img className="w-[100px]" src={product.image} alt={product.title}/>
-        <p>&#36; {product.price}</p>
-        <p>Rating {product.rating.rate}&#128948;  </p>
-      </div>
+    <main className="flex flex-wrap justify-center gap-14 p-4">{productData.map((product: Product, id: number) =>(
+      <Product key={id} id={product.id} title={product.title} price={product.price} description={product.description} category={product.category} image={product.image} rating={product.rating}/>
     ))
-    }</div>
+    }</main>
   )
 }
 
