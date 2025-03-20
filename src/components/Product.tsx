@@ -2,6 +2,7 @@ import { FC } from "react"
 import star from '../assets/star.png';
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../store/features/cart/cartSlice";
+import { AppDispatch } from "../store/store";
 
 
 type ProductCompProps = {
@@ -16,7 +17,7 @@ type ProductCompProps = {
 }
 
 const Product: FC<ProductCompProps> = ({ productId, title, price, image, rating }) => {
-    const dispatch = useDispatch();
+    const dispatch:AppDispatch = useDispatch();
     return (
         <div key={productId} className="flex flex-col items-center border-2 rounded-md p-4  w-[300px]">
             <img className="h-[200px] max-h-[200px] py-4" src={image} />

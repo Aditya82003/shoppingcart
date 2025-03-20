@@ -1,5 +1,7 @@
 import { Link, Route, Routes } from "react-router"
 import Home from "./pages/Home"
+import CartItems from "./pages/CartItems"
+
 
 function App() {
   return (
@@ -10,10 +12,8 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Home />} />
+        <Route path="cart" element={<CartItems />} />
       </Routes>
-
-
     </>
   )
 }

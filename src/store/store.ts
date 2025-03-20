@@ -5,10 +5,12 @@ import wishlistSlice from './features/wishlist/wishlistSlice'
 
 const store = configureStore({
     reducer: {
-        productSlice,
-        cartSlice,
-        wishlistSlice
+        product:productSlice,
+        cart:cartSlice,
+        wishlist:wishlistSlice
     }
 })
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store
