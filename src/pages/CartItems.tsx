@@ -10,7 +10,7 @@ const CartItems: FC = () => {
     return (
         <div className="px-4 ">
             {cart.map((item, index) => <Cart key={index} productId={item.productId} title={item.title} price={item.price} image={item.image} quantity={item.quantity} />)}
-            <div className="text-end text-xl sm:text-3xl  font-bold w-full "><span className="text-blue-400 sm:mr-12"> Total price:</span> $ {Math.round(totalPrice)}</div>
+            <div className="text-end text-xl sm:text-3xl  font-bold w-full mt-4"><span className="text-blue-400 sm:mr-12"> Total price:</span> $ {Math.round(totalPrice)}</div>
         </div>
 
     )
