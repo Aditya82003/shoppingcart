@@ -24,10 +24,14 @@ type WishListPayload = {
 
 }
 
+type ChangeWishlist={
+    productId:number
+}
+
 const initialState: WishlistItem = []
 
-const findItemIndex = (state: WishlistItem, action: PayloadAction<WishListPayload>): number => (
-    state.findIndex((product) => product.productId === action.payload.productId)
+const findItemIndex = (state: WishlistItem, productId:number): number => (
+    state.findIndex((product) => product.productId === productId)
 )
 
 const wishlistSlice = createSlice({
@@ -37,8 +41,8 @@ const wishlistSlice = createSlice({
         addWishlistItem(state, action: PayloadAction<WishListPayload>) {
             state.push({ ...action.payload })
         },
-        removeWishlistItem(state, action: PayloadAction<WishListPayload>) {
-            const existingItemIndex = findItemIndex(state, action)
+        removeWishlistItem(state, action: PayloadAction<ChangeWishlist>) {
+            const existingItemIndex = findItemIndex(state, action.payload.productId)
             if (existingItemIndex !== -1)
                 state.splice(existingItemIndex, 1)
         }

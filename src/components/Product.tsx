@@ -3,6 +3,7 @@ import star from '../assets/star.png';
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../store/features/cart/cartSlice";
 import { AppDispatch } from "../store/store";
+import { addWishlistItem } from "../store/features/wishlist/wishlistSlice";
 
 
 type ProductCompProps = {
@@ -28,7 +29,7 @@ const Product: FC<ProductCompProps> = ({ productId, title, price, image, rating 
             </div>
             <div className="flex w-full justify-between mt-6 ">
                 <button className="border-2 p-2  rounded-md bg-slate-200 hover:scale-105 active:scale-100" onClick={()=>dispatch(addCartItem({ productId, title, rating, price, image }))}>Add to Cart</button>
-                <button className="border-2 p-2  rounded-md bg-slate-200 hover:scale-105 active:scale-100">Add to Wishlist</button>
+                <button className="border-2 p-2  rounded-md bg-slate-200 hover:scale-105 active:scale-100" onClick={()=>dispatch(addWishlistItem({ productId, title, rating, price, image }))}>Add to Wishlist</button>
             </div>
         </div>
     )
