@@ -1,11 +1,11 @@
-import { RootState } from "../store/store"
 import { FC } from "react"
 import { useSelector } from "react-redux"
 import Cart from "../components/Cart"
+import { fetchCartState } from "../store/features/cart/cartSlice"
 
 const CartItems: FC = () => {
 
-    const cart = useSelector((state: RootState) => state.cart)
+    const cart = useSelector(fetchCartState)
     const totalPrice = cart.reduce((accumulator, currentItem) => accumulator + currentItem.price * currentItem.quantity, 0)
     return (
         <div className="px-4 ">

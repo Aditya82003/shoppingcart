@@ -1,9 +1,8 @@
 import { FC, useEffect } from "react"
-import productData from '../data/productList.json'
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store/store";
-import { fetchProductData } from "../store/features/product/productSlice";
+import { AppDispatch } from "../store/store";
+import { fetchProductData, fetchProductList } from "../store/features/product/productSlice";
 
 type Product = {
   id: number;
@@ -20,15 +19,15 @@ type Product = {
 
 
 const Home: FC = () => {
-  const {list} = useSelector((state:RootState)=>state.product)
-  const dispatch:AppDispatch =useDispatch()
-  useEffect(()=>{
-    dispatch(fetchProductData())
-  },[])
-  
+  const { list } = useSelector(fetchProductList)                       // fetchProductList is a selector which is defined in the product slice...........
+  const dispatch: AppDispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchProductData())                                //Thunk action creator -- this action creator return function which redux thunk handle behind the hood...
+  }, [])
+
   return (
-    <main className="flex flex-wrap justify-center gap-14 p-4">{list.map((product: Product, _id: number) =>(
-      <Product key={product.id} productId={product.id} title={product.title} price={product.price}  image={product.image} rating={product.rating}/>
+    <main className="flex flex-wrap justify-center gap-14 p-4">{list.map((product: Product, _id: number) => (
+      <Product key={product.id} productId={product.id} title={product.title} price={product.price} image={product.image} rating={product.rating} />
     ))
     }</main>
   )

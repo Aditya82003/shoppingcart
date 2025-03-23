@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 type Item = {
     productId: number,
@@ -9,28 +10,19 @@ type Item = {
         rate: number,
         count: number
     },
-
 }
+
 type WishlistItem = Item[]
-type WishListPayload = {
-    productId: number,
-    title: string,
-    price: number,
-    image: string,
-    rating: {
-        rate: number,
-        count: number
-    },
 
-}
+type WishListPayload = Omit<Item,''>
 
-type ChangeWishlist={
-    productId:number
+type ChangeWishlist = {
+    productId: number
 }
 
 const initialState: WishlistItem = []
 
-const findItemIndex = (state: WishlistItem, productId:number): number => (
+const findItemIndex = (state: WishlistItem, productId: number): number => (
     state.findIndex((product) => product.productId === productId)
 )
 
@@ -46,7 +38,6 @@ const wishlistSlice = createSlice({
             if (existingItemIndex !== -1)
                 state.splice(existingItemIndex, 1)
         }
-
     }
 })
 
@@ -54,5 +45,8 @@ export const {
     addWishlistItem,
     removeWishlistItem
 } = wishlistSlice.actions
+
+
+export const fetchWishlistState = (state: RootState) => state.wishlist                       //Selector for useSelector .............
 
 export default wishlistSlice.reducer

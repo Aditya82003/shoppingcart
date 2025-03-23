@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 type Item = {
     productId: number,
@@ -55,5 +56,7 @@ export const {
     increaseCartItem,
     decreaseCartItem
 } = cartSlice.actions
+
+export const fetchCartState =(state: RootState) => state.cart
 
 export default cartSlice.reducer
